@@ -4,8 +4,8 @@ require_relative('../db/sql_runner.rb')
 
 class Movie
 
-  attr_reader :id, :title, :genre
-  attr_accessor :rating
+  attr_reader :id
+  attr_accessor :rating, :title, :genre
 
   def initialize(movie_hash)
     @title = movie_hash['title']
@@ -30,6 +30,17 @@ class Movie
   def self.delete_all()
     sql = "DELETE FROM movies;"
     SqlRunner.run(sql)
+  end
+
+  def update_movie()
+    sql = "
+    UPDATE movies
+      SET (title, genre, rating)
+      = ($1, $2, $3)
+      WHERE id = $4;
+    "
+    values = [@title, @genre, @rating, @id]
+    SqlRunner.run(sql, values)
   end
 
 end
