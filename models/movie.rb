@@ -59,5 +59,21 @@ class Movie
     return result
   end
 
+#get all stars for a movie.
+
+def get_stars()
+  sql = "
+  SELECT stars.* FROM stars
+  INNER JOIN castings
+  ON castings.star_id = stars.id
+  WHERE movie_id = $1;
+  "
+  values = [@id]
+  pg_array = SqlRunner.run(sql, values)
+  stars = pg_array.map { |star| Star.new(star) }
+  return stars
+end
+
+
 
 end

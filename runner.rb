@@ -73,5 +73,8 @@ sigourney_casting.save_casting()
 
 #p Casting.all_castings
 #p Star.all_stars()
-p Movie.all_movies()
+#p Movie.all_movies()
 #
+#p joe.get_movies
+
+p home_alone.get_stars()
