@@ -10,7 +10,31 @@ class Casting
     @movie_id = casting_hash['movie_id'].to_i
     @star_id = casting_hash['star_id'].to_i
     @fee = casting_hash['fee'].to_i
-    @id = casting_hash['id'].to_i if casting_hash['fee'] 
+    @id = casting_hash['id'].to_i if casting_hash['fee']
   end
+
+  def save_casting()
+    sql = "
+      INSERT INTO castings
+      (movie_id, star_id, fee)
+      VALUES
+      ($1, $2, $3)
+      RETURNING id
+      "
+    values = [@movie_id, @star_id, @fee]
+    casting = SqlRunner.run(sql, values)
+    @id = casting[0]['id']
+  end
+
+  def self.delete_all()
+    sql = "DELETE FROM castings;"
+    SqlRunner.run(sql)
+  end
+
+
+
+
+
+
 
 end

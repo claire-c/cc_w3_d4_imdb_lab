@@ -12,4 +12,25 @@ class Star
     @id = star_hash['id'].to_i if star_hash['id']
   end
 
+  def save_star()
+    sql = "
+    INSERT INTO stars
+      (first_name, last_name)
+      VALUES
+      ($1, $2)
+      RETURNING id;
+    "
+    values = [@first_name, @last_name]
+    star = SqlRunner.run(sql, values)
+    @id = star[0]['id']
+  end
+
+  def self.delete_all()
+    sql = "DELETE FROM stars;"
+    SqlRunner.run(sql)
+  end
+
+
+
+
 end
