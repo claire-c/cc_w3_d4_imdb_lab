@@ -50,6 +50,13 @@ class Casting
     SqlRunner.run(sql, values)
   end
 
+  def self.all_castings()
+    sql = "SELECT * FROM castings;"
+    pg_array = SqlRunner.run(sql)
+    result = pg_array.map { |casting| Casting.new(casting) }
+    return result
+  end
+
 
 
 

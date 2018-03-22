@@ -68,7 +68,10 @@ sigourney_casting.save_casting()
 # jaws.update_movie()
 #
 # daniel.delete()
-sigourney_casting.delete()
+#sigourney_casting.delete()
 # home_alone.delete()
 
+#p Casting.all_castings
+#p Star.all_stars()
+p Movie.all_movies()
 #

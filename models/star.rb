@@ -50,7 +50,14 @@ class Star
 
     values = [@id]
     SqlRunner.run(sql, values)
-  end 
+  end
+
+  def self.all_stars()
+    sql = "SELECT * FROM stars;"
+    pg_array = SqlRunner.run(sql)
+    result = pg_array.map { |star| Star.new(star) }
+    return result
+  end
 
 
 
