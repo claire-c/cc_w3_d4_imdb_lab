@@ -58,13 +58,17 @@ joe_casting_ha.save_casting()
 daniel_casting.save_casting()
 sigourney_casting.save_casting()
 
-joe.first_name = "Joey"
-joe.update_star()
-
-bruce_casting.fee = '25'
-bruce_casting.update_casting()
-
-jaws.genre = 'adventure'
-jaws.update_movie()
+# joe.first_name = "Joey"
+# joe.update_star()
+#
+# bruce_casting.fee = '25'
+# bruce_casting.update_casting()
+#
+# jaws.genre = 'adventure'
+# jaws.update_movie()
+#
+# daniel.delete()
+sigourney_casting.delete()
+# home_alone.delete()
 
 #
